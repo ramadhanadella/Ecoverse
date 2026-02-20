@@ -1,0 +1,252 @@
+#################### USER #####################
+
+// Buat User
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "Wulan",
+    "password": "koor123",
+    "confPassword": "koor123",
+    "role": "koor",
+    "rwId": "6"
+}
+
+###
+// get All User
+GET http://localhost:5000/users
+
+###
+// get User Id
+GET http://localhost:5000/users/9
+
+###
+// update User
+PATCH http://localhost:5000/users/37
+Content-Type: application/json
+
+{
+    "name": "Dorgu Kipli",
+    "password": "pekerja123",
+    "confPassword": "pekerja123",
+    "role": "pekerja",
+    "rwId": "1"
+}
+
+###
+// Delete User 
+DELETE http://localhost:5000/users/100
+
+
+###
+// Count Pekerja
+GET http://localhost:5000/users/count-pekerja
+
+
+###
+// get profile User
+GET http://localhost:5000/users/profile
+
+###
+// get pekerja list
+GET http://localhost:5000/users/pekerja
+
+
+
+###
+//test
+GET http://localhost:5000/test
+
+
+
+
+###
+// login admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "nip": "ECOV-0001",
+    "password": "admin123"
+}
+
+###
+// login visitor
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "nip": "ECOV-0002",
+    "password": "visitor123"
+}
+
+###
+// login koor
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "nip": "ECOV-0011",
+    "password": "koor123"
+}
+
+###
+// login pekerja
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "nip": "ECOV-0003",
+    "password": "pekerja123"
+}
+
+###
+// Me
+GET http://localhost:5000/me
+
+###
+// Logout
+DELETE http://localhost:5000/logout
+
+
+
+
+#################### RW #####################
+
+
+
+// Create RW
+POST http://localhost:5000/RW
+Content-Type: application/json
+
+{
+    "name": "RW 6"
+}
+
+###
+// get All RW
+GET http://localhost:5000/RW
+
+###
+// get RW by Id
+GET http://localhost:5000/RW/2
+
+###
+// Update RW
+PATCH http://localhost:5000/RW/7
+Content-Type: application/json
+
+{
+    "name": "RW 7",
+}
+
+###
+// Delete URW
+DELETE http://localhost:5000/RW/12
+
+
+
+
+#################### Sampah #####################
+
+
+
+
+// Create Sampah
+POST http://localhost:5000/Sampah
+Content-Type: application/json
+
+{
+    "category": "residu"
+}
+
+###
+// get All Sampah
+GET http://localhost:5000/Sampah
+
+###
+// get Sampah by Id
+GET http://localhost:5000/Sampah/2
+
+###
+// Update RW
+PATCH http://localhost:5000/Sampah/7
+Content-Type: application/json
+
+{
+    "category": "organik",
+}
+
+###
+// delete Sampah
+DELETE http://localhost:5000/Sampah/5
+
+
+
+#################### Setor #####################
+
+
+// buat data Setor
+POST http://localhost:5000/Setor
+Content-Type: application/json
+
+{
+  "quantity": 10,
+  "unit": "kg",
+  "date": "2025-12-10",
+  "sampahId": 3,
+  "rwId": 2
+}
+
+###
+// get All Setor
+GET http://localhost:5000/Setor
+
+###
+// get Setor by Id
+GET http://localhost:5000/Setor/7
+
+###
+// Update Setor
+PATCH http://localhost:5000/Setor/7
+Content-Type: application/json
+
+{
+  "quantity": 40,
+  "unit": "kg",
+  "date": "2025-11-22",
+  "sampahId": 3,
+  "rwId": 5
+}
+
+###
+// delete Setor
+DELETE http://localhost:5000/Setor/5
+
+###
+// get Monthly Summary
+GET http://localhost:5000/setor/summary-monthly
+
+###
+// get Total Sampah
+GET http://localhost:5000/setor/total-sampah
+
+###
+// get 12 Months Data
+GET http://localhost:5000/setor/summary-by-month
+
+###
+// get Data RW
+GET http://localhost:5000/setor/data-rw
+
+###
+// get Data RW Monthly
+GET http://localhost:5000/setor/data-rw-monthly
+
+
+
+#################### Laporan #####################
+
+
+// Download Laporan PDF
+GET http://localhost:5000/laporan/summary?bulan=12&tahun=2025
