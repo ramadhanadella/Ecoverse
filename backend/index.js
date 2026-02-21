@@ -30,8 +30,11 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: store,
-    cookie: { secure: "auto" },
-  })
+    cookie: {
+      secure: "true",
+      sameSite: "none",
+    },
+  }),
 );
 
 app.use(
@@ -41,8 +44,9 @@ app.use(
       "http://localhost:5174",
       "http://localhost:5173",
       "http://localhost:3000",
+      "https://ecoverse-frontend.vercel.app",
     ],
-  })
+  }),
 );
 
 app.use(express.json());
