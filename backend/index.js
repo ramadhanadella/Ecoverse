@@ -44,7 +44,7 @@ app.use(
       "http://localhost:5174",
       "http://localhost:5173",
       "http://localhost:3000",
-      "https://ecoverse-frontend.vercel.app",
+      "https://ecoverse-2026.vercel.app",
     ],
   }),
 );
