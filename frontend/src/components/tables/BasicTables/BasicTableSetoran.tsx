@@ -106,7 +106,8 @@ export default function RiwayatSetoranTable() {
     if (!editingSetoran) return;
     try {
       await axios.patch(
-        `http://localhost:5000/setor/${editingSetoran.id}`,
+        //`http://localhost:5000/setor/
+        `${import.meta.env.VITE_API_URL}/setor/${editingSetoran.id}`,
         {
           quantity: editingSetoran.quantity,
           date: editingSetoran.date,
@@ -127,9 +128,13 @@ export default function RiwayatSetoranTable() {
   const handleDelete = async () => {
     if (!deletingId) return;
     try {
-      await axios.delete(`http://localhost:5000/setor/${deletingId}`, {
-        withCredentials: true,
-      });
+      await axios.delete(
+        //http://localhost:5000/setor/
+        `${import.meta.env.VITE_API_URL}/setor/${deletingId}`,
+        {
+          withCredentials: true,
+        },
+      );
       setData(data.filter((item) => item.id !== deletingId));
       closeDeleteModal();
     } catch (error) {

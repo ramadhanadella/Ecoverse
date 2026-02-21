@@ -101,7 +101,8 @@ export default function DataPekerjaTable() {
     try {
       console.log("Mengirim PATCH request...");
       const response = await axios.patch(
-        `http://localhost:5000/users/${editingUser.id}`,
+        //`http://localhost:5000/users/
+        `${import.meta.env.VITE_API_URL}/users/${editingUser.id}`,
         {
           name: editingUser.nama,
           role: editingUser.role,
@@ -125,9 +126,13 @@ export default function DataPekerjaTable() {
     console.log("handleDelete called, deletingId:", deletingId);
     if (!deletingId) return;
     try {
-      await axios.delete(`http://localhost:5000/users/${deletingId}`, {
-        withCredentials: true,
-      });
+      await axios.delete(
+        //`http://localhost:5000/users/
+        `${import.meta.env.VITE_API_URL}/users/${deletingId}`,
+        {
+          withCredentials: true,
+        },
+      );
       setData(data.filter((item) => item.id !== deletingId));
       closeDeleteModal();
     } catch (error) {
