@@ -8,6 +8,9 @@ import { AppWrapper } from "./components/common/PageMeta.tsx";
 import { ThemeProvider } from "./context/ThemeContext.tsx";
 import { UserProvider } from "./context/UserContext.tsx";
 
+import axios from "axios";
+axios.defaults.withCredentials = true;
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
@@ -17,5 +20,5 @@ createRoot(document.getElementById("root")!).render(
         </AppWrapper>
       </UserProvider>
     </ThemeProvider>
-  </StrictMode>
+  </StrictMode>,
 );
