@@ -31,8 +31,7 @@ app.use(
     saveUninitialized: false,
     store: store,
     cookie: {
-      secure: true,
-      sameSite: "none",
+      secure: "auto",
     },
   }),
 );
@@ -44,7 +43,7 @@ app.use(
       "http://localhost:5174",
       "http://localhost:5173",
       "http://localhost:3000",
-      "https://ecoverse-2026.vercel.app",
+      //"https://ecoverse-2026.vercel.app",
     ],
   }),
 );
