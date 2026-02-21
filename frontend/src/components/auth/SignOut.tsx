@@ -1,7 +1,8 @@
 import axios from "axios";
 import Button from "../ui/button/Button";
 
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = `${import.meta.env.VITE_API_URL}`;
+//"http://localhost:5000";
 
 export default function SignOut() {
   const handleLogout = async () => {
