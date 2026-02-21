@@ -24,7 +24,7 @@ export default function DataPekerjaPage() {
   const handleAdd = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/users",
+        "https://ecoverse-v24l.vercel.app/api/users",
         {
           name: newUser.name,
           password: newUser.password,
