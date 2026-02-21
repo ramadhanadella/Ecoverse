@@ -14,6 +14,8 @@ dotenv.config();
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 const sessionStore = SequelizeStore(session.Store);
 
 const store = new sessionStore({
@@ -22,19 +24,8 @@ const store = new sessionStore({
 
 (async () => {
   await db.sync();
+  store.sync();
 })();
-
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: store,
-    cookie: {
-      secure: "auto",
-    },
-  }),
-);
 
 app.use(
   cors({
@@ -48,6 +39,21 @@ app.use(
   }),
 );
 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: store,
+    proxy: true,
+    cookie: {
+      secure: true,
+      sameSite: "none",
+      maxAge: 1000 * 60 * 60 * 24,
+    },
+  }),
+);
+
 app.use(express.json());
 app.use(AuthRoute);
 app.use(UserRoute);
@@ -55,8 +61,6 @@ app.use(SampahRoute);
 app.use(RwRoute);
 app.use(SetorRoute);
 app.use(LaporanRoute);
-
-store.sync();
 
 app.listen(process.env.APP_PORT, () => {
   console.log(`Server up and running...`);
