@@ -22,10 +22,11 @@ export default function WeeklyStatusTable() {
     const fetchWeeklyStatus = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/setor/data-rw",
+          `${import.meta.env.VITE_API_URL}/setor/data-rw`,
+          //          "http://localhost:5000/setor/data-rw",
           {
             withCredentials: true,
-          }
+          },
         );
         setData(response.data);
       } catch (error) {

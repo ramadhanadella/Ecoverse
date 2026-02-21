@@ -11,18 +11,20 @@ export default function EcommerceMetrics() {
     const fetchTotal = async () => {
       try {
         const responsePekerja = await axios.get(
-          "http://localhost:5000/users/count-pekerja",
+          `${import.meta.env.VITE_API_URL}/users/count-pekerja`,
+          //          "http://localhost:5000/users/count-pekerja",
           {
             withCredentials: true,
-          }
+          },
         );
         setTotalPekerja(responsePekerja.data.total);
 
         const responseSampah = await axios.get(
-          "http://localhost:5000/setor/total-sampah",
+          `${import.meta.env.VITE_API_URL}/setor/total-sampah`,
+          //          "http://localhost:5000/setor/total-sampah",
           {
             withCredentials: true,
-          }
+          },
         );
         setTotalSampah(responseSampah.data.total);
       } catch (error) {

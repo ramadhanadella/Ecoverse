@@ -55,16 +55,20 @@ export default function RiwayatSetoranTable() {
   } = useModal();
 
   const [editingSetoran, setEditingSetoran] = useState<SetoranData | null>(
-    null
+    null,
   );
   const [deletingId, setDeletingId] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchSetoran = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/setor", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/setor`,
+          //          "http://localhost:5000/setor",
+          {
+            withCredentials: true,
+          },
+        );
         setData(response.data);
       } catch (error) {
         console.error("Gagal mengambil data setoran:", error);
@@ -107,12 +111,12 @@ export default function RiwayatSetoranTable() {
           quantity: editingSetoran.quantity,
           date: editingSetoran.date,
         },
-        { withCredentials: true }
+        { withCredentials: true },
       );
       setData(
         data.map((item) =>
-          item.id === editingSetoran.id ? editingSetoran : item
-        )
+          item.id === editingSetoran.id ? editingSetoran : item,
+        ),
       );
       closeEditModal();
     } catch (error) {

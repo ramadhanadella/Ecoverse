@@ -23,9 +23,14 @@ export default function RiwayatSetoranPage() {
 
   const handleAdd = async () => {
     try {
-      await axios.post("http://localhost:5000/setor", newSetor, {
-        withCredentials: true,
-      });
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/setor`,
+        //""http://localhost:5000/setor",
+        newSetor,
+        {
+          withCredentials: true,
+        },
+      );
       closeAddModal();
       // Refresh tabel jika perlu (biasanya dilakukan dengan callback atau context)
     } catch (error) {

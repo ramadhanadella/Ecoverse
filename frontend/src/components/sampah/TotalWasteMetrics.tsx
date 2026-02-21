@@ -21,10 +21,11 @@ export default function TotalWasteMetrics() {
     const fetchWasteData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/setor/summary-monthly",
+          `${import.meta.env.VITE_API_URL}/setor/summary-monthly`,
+          //"http://localhost:5000/setor/summary-monthly",
           {
             withCredentials: true,
-          }
+          },
         );
         setWasteData(response.data);
       } catch (error) {

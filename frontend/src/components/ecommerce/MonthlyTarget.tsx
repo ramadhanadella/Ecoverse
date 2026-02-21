@@ -16,10 +16,11 @@ export default function MonthlyTarget() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/setor/summary-monthly",
+          `${import.meta.env.VITE_API_URL}/setor/summary-monthly`,
+          //          "http://localhost:5000/setor/summary-monthly",
           {
             withCredentials: true,
-          }
+          },
         );
         const { total, organik, nonOrganik, residu } = response.data;
         setData({ total, organik, nonOrganik, residu });

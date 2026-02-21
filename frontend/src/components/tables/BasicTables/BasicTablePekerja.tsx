@@ -47,9 +47,13 @@ export default function DataPekerjaTable() {
   const fetchWorkers = useCallback(async () => {
     try {
       console.log("Fetching workers...");
-      const response = await axios.get("http://localhost:5000/pekerja", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/pekerja`,
+        //"http://localhost:5000/pekerja",
+        {
+          withCredentials: true,
+        },
+      );
       setData(response.data);
     } catch (error) {
       console.error("Gagal mengambil data pekerja:", error);

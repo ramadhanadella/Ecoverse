@@ -32,10 +32,11 @@ export default function WasteSummaryTable() {
         console.log(`📅 Fetching data bulan ${bulanSekarang}/${tahunSekarang}`);
 
         const response = await axios.get(
-          `http://localhost:5000/setor/data-rw-monthly?bulan=${bulanSekarang}&tahun=${tahunSekarang}`,
+          `${import.meta.env.VITE_API_URL}/setor/data-rw-monthly?bulan=${bulanSekarang}&tahun=${tahunSekarang}`,
+          //`http://localhost:5000/setor/data-rw-monthly?bulan=${bulanSekarang}&tahun=${tahunSekarang}`,
           {
             withCredentials: true,
-          }
+          },
         );
 
         console.log("🔍 Data RW dari API:", response.data);

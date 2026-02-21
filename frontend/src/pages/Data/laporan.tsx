@@ -27,8 +27,9 @@ export default function LaporanPage() {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:5000/laporan/summary?bulan=${bulan}&tahun=${tahun}`,
-        { withCredentials: true }
+        `${import.meta.env.VITE_API_URL}/laporan/summary?bulan=${bulan}&tahun=${tahun}`,
+        //"`http://localhost:5000/laporan/summary?bulan=${bulan}&tahun=${tahun}`,
+        { withCredentials: true },
       );
       setSummary(response.data);
     } catch (error) {
@@ -67,7 +68,7 @@ export default function LaporanPage() {
       doc.text(
         `${rw.rw}: ${rw.sampah} kg (${rw.pekerja} pekerja)`,
         25,
-        y + i * 7
+        y + i * 7,
       );
     });
     doc.save(`laporan-ecoverse-${summary.periode}.pdf`);

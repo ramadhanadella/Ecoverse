@@ -11,10 +11,12 @@ export default function WasteSummaryChart() {
     const fetchWasteData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/setor/summary-monthly",
+          `${import.meta.env.VITE_API_URL}/setor/summary-monthly`,
+
+          //"http://localhost:5000/setor/summary-monthly",
           {
             withCredentials: true,
-          }
+          },
         );
         const { organik, nonOrganik, residu } = response.data;
         setData([organik, nonOrganik, residu]);

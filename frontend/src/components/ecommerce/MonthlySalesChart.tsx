@@ -10,10 +10,11 @@ export default function MonthlySalesChart() {
     const fetchMonthlyData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/setor/summary-by-month",
+          `${import.meta.env.VITE_API_URL}/setor/summary-by-month`,
+          //          "http://localhost:5000/setor/summary-by-month",
           {
             withCredentials: true,
-          }
+          },
         );
         setData(response.data);
       } catch (error) {

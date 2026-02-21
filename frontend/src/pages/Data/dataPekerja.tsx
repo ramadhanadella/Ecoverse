@@ -24,8 +24,8 @@ export default function DataPekerjaPage() {
   const handleAdd = async () => {
     try {
       await axios.post(
-        //`${import.meta.env.VITE_API_URL}/users`,
-        "http://localhost:5000/users",
+        `${import.meta.env.VITE_API_URL}/users`,
+        //"http://localhost:5000/users",
         {
           name: newUser.name,
           password: newUser.password,
