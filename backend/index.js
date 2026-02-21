@@ -20,9 +20,19 @@ const store = new sessionStore({
   db: db,
 });
 
-(async () => {
+// coba railway
+
+try {
+  await db.authenticate();
+  console.log("DB connected");
   await db.sync();
-})();
+} catch (err) {
+  console.error("DB error:", err);
+}
+
+//(async () => {
+//await db.sync();
+//})();
 
 app.use(
   session({
@@ -59,8 +69,16 @@ app.use(LaporanRoute);
 
 store.sync();
 
-app.listen(process.env.APP_PORT, () => {
-  console.log(`Server up and running...`);
+const PORT = process.env.PORT || process.env.APP_PORT || 5000;
+
+// ini coba railway
+
+app.listen(PORT, () => {
+  console.log("Server running on port", PORT);
 });
+
+//app.listen(process.env.APP_PORT, () => {
+//console.log(`Server up and running...`);
+//});
 
 app.get("/test", (req, res) => res.send("OK"));
