@@ -12,7 +12,6 @@ export const getLaporanSummary = async (req, res) => {
     const startDate = new Date(parseInt(tahun), parseInt(bulan) - 1, 1);
     const endDate = new Date(parseInt(tahun), parseInt(bulan), 0);
 
-    // 1. Total sampah per jenis
     const totals = await Setor.findAll({
       where: {
         date: { [Op.between]: [startDate, endDate] },
@@ -26,7 +25,6 @@ export const getLaporanSummary = async (req, res) => {
       raw: true,
     });
 
-    // 2. Total pekerja per RW
     const rws = await RW.findAll();
     const rwData = [];
     for (const rw of rws) {
