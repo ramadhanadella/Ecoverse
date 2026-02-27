@@ -44,8 +44,8 @@ export default function RiwayatSetoranPage() {
         <h1 className="text-2xl font-semibold mb-4 text-[#000000] dark:text-white">
           Riwayat Setoran
         </h1>
-        {userRole === "pekerja" ||
-          (userRole === "koor" && (
+        {userRole === "koor" ||
+          (userRole === "pekerja" && (
             <button
               className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[#285303] rounded hover:bg-[#80BC4D]"
               onClick={openAddModal}
