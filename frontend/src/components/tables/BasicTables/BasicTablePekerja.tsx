@@ -285,6 +285,7 @@ export default function DataPekerjaTable() {
             <option value="4">RW 4</option>
             <option value="5">RW 5</option>
             <option value="6">RW 6</option>
+            <option value="7">RW 7</option>
           </select>
         </div>
       </div>
